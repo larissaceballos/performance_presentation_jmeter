@@ -130,6 +130,35 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor LOCAL" enabled="true">
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="script">import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+String stringToSearch=prev.getResponseDataAsString();
+Pattern p = Pattern.compile(&quot;\&quot;advice_id\&quot;&quot;);   
+Matcher m = p.matcher(stringToSearch);
+if (m.find()){
+	FileWriter fstream = new FileWriter(&quot;C:\\Users\\larissa.prates\\OneDrive - Anheuser-Busch InBev\\My Documents\\Automações\\performance_presentation_jmeter\\advice.csv&quot;,true);
+	BufferedWriter out = new BufferedWriter(fstream);
+	out.write(vars.get(&quot;advice_id&quot;));
+	out.write(System.getProperty(&quot;line.separator&quot;));
+	out.close();
+	fstream.close();
+} else {
+	FileWriter fstream = new FileWriter(&quot;C:\\Users\\larissa.prates\\OneDrive - Anheuser-Busch InBev\\My Documents\\Automações\\performance_presentation_jmeter\\advice.csv&quot;,true);
+	BufferedWriter out = new BufferedWriter(fstream);
+	out.write(vars.get(&quot;advice_id&quot;));
+	out.write(System.getProperty(&quot;line.separator&quot;));
+	out.close();
+	fstream.close(); 
+}
+
+</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET - id" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -151,7 +180,7 @@
           </HTTPSamplerProxy>
           <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Simple Controller - POST" enabled="true"/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Simple Controller - POST" enabled="false"/>
         <hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -182,7 +211,7 @@
           <hashTree/>
         </hashTree>
       </hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group" enabled="true">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group" enabled="false">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="375224369">
             <stringProp name="1598">20</stringProp>
